@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import SplashCursor from '@/components/effects/SplashCursor'
+import LightRays from "@/components/home/LightRays";
+import Navbar from "@/components/home/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +30,43 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <div className="absolute inset-0 top-0  min-h-screen">
+        <LightRays
+    raysOrigin="top-center-offset"
+    raysColor="#A855F7"
+    raysSpeed={1}
+    lightSpread={0.5}
+    rayLength={3}
+    followMouse={true}
+    mouseInfluence={0.1}
+    noiseAmount={0}
+    distortion={0}
+    className="custom-rays"
+    pulsating={true}
+    fadeDistance={1}
+    saturation={1}
+/>
+</div>
+{/* </div> */}
+      <SplashCursor
+  DENSITY_DISSIPATION={9}
+  VELOCITY_DISSIPATION={2}
+  PRESSURE={0.1}
+  CURL={3}
+  SPLAT_RADIUS={0.2}
+  SPLAT_FORCE={6000}
+  COLOR_UPDATE_SPEED={10}
+  SHADING
+  RAINBOW_MODE={false}
+  COLOR="#A855F7"
+/>
+<main>
+      <Navbar />
+{children}
+</main>
+</body>
+
     </html>
   );
 }
