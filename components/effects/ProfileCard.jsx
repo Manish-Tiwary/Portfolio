@@ -428,7 +428,7 @@ const ProfileCardComponent = ({
       )}
       <div ref={shellRef} className="relative z-[1] group">
         <section
-          className="grid relative overflow-hidden backface-hidden"
+          className="grid relative overflow-visible backface-hidden"
           style={{
             height: '80svh',
             maxHeight: '540px',
@@ -479,7 +479,8 @@ const ProfileCardComponent = ({
                 transform: 'translateZ(2px)',
                 gridArea: '1 / -1',
                 borderRadius: cardRadius,
-                pointerEvents: 'none'
+                pointerEvents: 'none',
+                overflow: 'visible'
               }}
             >
               <img
@@ -509,13 +510,13 @@ const ProfileCardComponent = ({
                     right: 'var(--ui-inset)',
                     background: 'rgba(255, 255, 255, 0.1)',
                     borderRadius: 'calc(max(0px, var(--card-radius) - var(--ui-inset) + var(--ui-radius-bias)))',
-                    padding: '12px 14px'
+                    padding: '8px 10px'
                   }}
                 >
                   <div className="flex items-center gap-3">
                     <div
                       className="rounded-full overflow-hidden border border-white/10 flex-shrink-0"
-                      style={{ width: '48px', height: '48px' }}
+                      style={{ width: '40px', height: '40px' }}
                     >
                       <img
                         className="w-full h-full object-cover rounded-full"
@@ -544,18 +545,21 @@ const ProfileCardComponent = ({
                   >
                     {contactText}
                   </button> */}
-<div className="mt-10 h-3 w-5">
-  <MagnetLens 
-    color="#A855F7" 
-    baseWidth="10%" 
+<a href="#Contact"
+  onClick={onContactClick}
+  style={{ textDecoration: 'none', display: 'inline-flex', position: 'relative', zIndex: 50 }}
+>
+  <MagnetLens
+    color="#A855F7"
+    baseWidth="100px"
     strength={5}
-    onClick={onContactClick}
+    ghost={false}
   >
-    <div className="py-3 text-xs font-bold text-white uppercase tracking-widest">
+    <span style={{ whiteSpace: 'nowrap', fontSize: '11px', fontWeight: 700, color: 'white', letterSpacing: '0.1em' }}>
       {contactText}
-    </div>
+    </span>
   </MagnetLens>
-</div>
+</a>
                 </div>
               )}
             </div>

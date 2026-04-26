@@ -13,7 +13,7 @@ const MagnetLens = ({
     <div className="relative inline-block z-50">
       <Magnet padding={ghost ? 40 : 120} disabled={false} magnetStrength={strength}>
         {/* Adjusted padding: Ghost mode needs very little padding to stay tight to the text */}
-        <div className={`group relative flex items-center justify-center cursor-pointer ${ghost ? 'p-2' : 'p-32'}`}>
+        <div className={`group relative flex items-center justify-center cursor-pointer ${ghost ? 'p-2' : 'p-3'}`}>
           
           {/* THE RING EFFECT (The only thing visible in ghost mode) */}
           <div 
@@ -24,20 +24,20 @@ const MagnetLens = ({
             }}
           />
 
-          {/* THE MORPHING BACKGROUND - Hidden if ghost is true */}
-          {!ghost && (
-            <div 
-              style={{ width: baseWidth }}
-              className="absolute z-0 h-[60px] rounded-xl bg-[#0d1117] border border-zinc-800 transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:w-[400px] group-hover:h-[400px] group-hover:rounded-full group-hover:bg-transparent group-hover:border-transparent" 
-            />
-          )}
+          {/* THE MORPHING BACKGROUND - starts invisible, expands on hover */}
+{!ghost && (
+  <div 
+    style={{ width: baseWidth }}
+    className="absolute z-0 h-[36px] w-[100px] rounded-xl bg-transparent border border-transparent transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:w-[400px] group-hover:h-[400px] group-hover:rounded-full group-hover:bg-transparent group-hover:border-transparent"
+  />
+)}
 
-          {/* THE STAR BORDER - Hidden if ghost is true */}
           {!ghost && (
-            <div className="absolute inset-0 z-0 flex items-center justify-center transition-all duration-200 group-hover:scale-150 group-hover:opacity-0 group-hover:blur-xl">
-              <StarBorder as="div" color={color} speed="2s" style={{ width: baseWidth }} className="h-[60px] rounded-xl" />
-            </div>
-          )}
+  <div 
+    className="absolute z-0 h-[36px] rounded-xl bg-transparent border border-transparent transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:w-[400px] group-hover:h-[400px] group-hover:rounded-full"
+    style={{ width: '100%', minWidth: '100%' }}
+  />
+)}
 
           {/* THE CONTENT - No scale-up for ghost mode to keep nav stable */}
           <div className={`relative z-30 transition-all duration-200 text-zinc-300 group-hover:text-white font-bold ${!ghost && 'group-hover:scale-150 text-xl'}`}>

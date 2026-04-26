@@ -4,7 +4,8 @@ import Expertise from "@/components/home/Expertise";
 import Projects from "@/components/home/Projects";
 import Journey from "@/components/home/Journey";
 import Contact from "@/components/home/Contact";
-import Footer from "@/components/home/Footer"
+import Footer from "@/components/home/Footer";
+
 
 export default function Home() {
   // 1. Data for Hero and About
@@ -78,7 +79,7 @@ const journeyData = {
 
 
   return (
-    <main className="bg-[#050505]">
+    <main className="">
       {/* Pass userProfile to Hero */}
       <Hero data={userProfile} />
       
